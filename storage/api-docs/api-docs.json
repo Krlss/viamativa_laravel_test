@@ -1,0 +1,471 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Documentación API",
+        "description": "Documentación de la API de la prueba",
+        "contact": {
+            "email": "cpico6375@utm.edu.ec"
+        },
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/api/halls": {
+            "get": {
+                "tags": [
+                    "Halls"
+                ],
+                "summary": "Mostrar salas",
+                "operationId": "551b3ec40e8f2c56df6f9600128fb8fd",
+                "responses": {
+                    "200": {
+                        "description": "Mostrar todas las salas."
+                    },
+                    "default": {
+                        "description": "Ha ocurrido un error."
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Halls"
+                ],
+                "summary": "Crear sala",
+                "operationId": "56f1c7798aaaf18f8d17b5ba973deb88",
+                "requestBody": {
+                    "description": "Datos de la sala",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "status": {
+                                        "type": "boolean"
+                                    },
+                                    "id_movie": {
+                                        "type": "number"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Sala creada correctamente."
+                    },
+                    "404": {
+                        "description": "Sala no encontrada."
+                    },
+                    "500": {
+                        "description": "Ha ocurrido un error."
+                    }
+                }
+            }
+        },
+        "/api/halls/{id}": {
+            "get": {
+                "tags": [
+                    "Halls"
+                ],
+                "summary": "Mostrar sala",
+                "operationId": "8470584e4438954f5ba0bfc9c8db555c",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id de la sala",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Mostrar sala por id."
+                    },
+                    "404": {
+                        "description": "Sala no encontrada."
+                    },
+                    "default": {
+                        "description": "Ha ocurrido un error."
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Halls"
+                ],
+                "summary": "Actualizar sala",
+                "operationId": "78e7a577fd6d58e639a6077f52bb94b6",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id de la sala",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "Datos de la sala",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "status": {
+                                        "type": "boolean"
+                                    },
+                                    "id_movie": {
+                                        "type": "number"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Sala actualizada correctamente."
+                    },
+                    "404": {
+                        "description": "Sala no encontrada."
+                    },
+                    "500": {
+                        "description": "Ha ocurrido un error."
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Halls"
+                ],
+                "summary": "Eliminar sala",
+                "operationId": "f9929543b70b572f9780d0970b2398b7",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id de la sala",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Sala eliminada correctamente."
+                    },
+                    "404": {
+                        "description": "Sala no encontrada."
+                    },
+                    "500": {
+                        "description": "Ha ocurrido un error."
+                    }
+                }
+            }
+        },
+        "/api/halls/review/{name}": {
+            "get": {
+                "tags": [
+                    "Halls"
+                ],
+                "summary": "Mostrar si la película está llena o no",
+                "operationId": "53adbb2f2da52f74ffeb6186605489da",
+                "parameters": [
+                    {
+                        "name": "name",
+                        "in": "path",
+                        "description": "Nombre de la sala",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Sala encontrada."
+                    },
+                    "404": {
+                        "description": "Sala no encontrada."
+                    },
+                    "500": {
+                        "description": "Ha ocurrido un error."
+                    }
+                }
+            }
+        },
+        "/api/films": {
+            "get": {
+                "tags": [
+                    "Movies"
+                ],
+                "summary": "Mostrar peliculas",
+                "operationId": "8b4fca27aa015363abe143232c0be1bb",
+                "responses": {
+                    "200": {
+                        "description": "Mostrar todas las peliculas."
+                    },
+                    "default": {
+                        "description": "Ha ocurrido un error."
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Movies"
+                ],
+                "summary": "Crear pelicula",
+                "operationId": "4d75a98ad3e57e0e0aec722566aa9cf6",
+                "requestBody": {
+                    "description": "Datos de la pelicula",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "duration": {
+                                        "type": "number"
+                                    },
+                                    "id_hall": {
+                                        "type": "number"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Pelicula creada correctamente."
+                    },
+                    "422": {
+                        "description": "Error de validacion."
+                    },
+                    "default": {
+                        "description": "Ha ocurrido un error."
+                    }
+                }
+            }
+        },
+        "/api/films/{id}": {
+            "get": {
+                "tags": [
+                    "Movies"
+                ],
+                "summary": "Mostrar pelicula",
+                "operationId": "335c0f034126f9348bdaeb475fdfdfc4",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id de la pelicula",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Mostrar pelicula por id."
+                    },
+                    "404": {
+                        "description": "Pelicula no encontrada."
+                    },
+                    "default": {
+                        "description": "Ha ocurrido un error."
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Movies"
+                ],
+                "summary": "Actualizar pelicula",
+                "operationId": "885d9d560505df51ca61a8f3fd626c0e",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id de la pelicula",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "Datos de la pelicula",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "duration": {
+                                        "type": "number"
+                                    },
+                                    "id_hall": {
+                                        "type": "number"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Pelicula actualizada correctamente."
+                    },
+                    "404": {
+                        "description": "Pelicula no encontrada."
+                    },
+                    "422": {
+                        "description": "Error de validacion."
+                    },
+                    "default": {
+                        "description": "Ha ocurrido un error."
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Movies"
+                ],
+                "summary": "Eliminar pelicula",
+                "operationId": "27feed9533be038a54ab27ba2d1aebb6",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id de la pelicula",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Pelicula eliminada correctamente."
+                    },
+                    "404": {
+                        "description": "Pelicula no encontrada."
+                    },
+                    "default": {
+                        "description": "Ha ocurrido un error."
+                    }
+                }
+            }
+        },
+        "/api/films/{name}/{id_hall}": {
+            "get": {
+                "tags": [
+                    "Movies"
+                ],
+                "summary": "Obtener pelicula por nombre y id de sala",
+                "operationId": "094e00487247c7c73e4a678a2d0835a3",
+                "parameters": [
+                    {
+                        "name": "name",
+                        "in": "path",
+                        "description": "Nombre de la pelicula",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "id_hall",
+                        "in": "path",
+                        "description": "Id de la sala",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Pelicula encontrada."
+                    },
+                    "404": {
+                        "description": "Pelicula no encontrada."
+                    },
+                    "default": {
+                        "description": "Ha ocurrido un error."
+                    }
+                }
+            }
+        },
+        "/api/films/{date_published}": {
+            "get": {
+                "tags": [
+                    "Movies"
+                ],
+                "summary": "Obtener peliculas por fecha de publicacion",
+                "operationId": "287f4132d186facb7c7ee8d8ac4b25d6",
+                "parameters": [
+                    {
+                        "name": "date_published",
+                        "in": "path",
+                        "description": "Fecha de publicacion de la pelicula",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Peliculas encontradas."
+                    },
+                    "404": {
+                        "description": "Peliculas no encontradas."
+                    },
+                    "default": {
+                        "description": "Ha ocurrido un error."
+                    }
+                }
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "Halls",
+            "description": "API Endpoints of halls"
+        },
+        {
+            "name": "Movies",
+            "description": "API Endpoints of Movies"
+        }
+    ]
+}
